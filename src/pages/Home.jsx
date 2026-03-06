@@ -1,22 +1,55 @@
+import { useEffect } from "react";
 import rigoImageUrl from "../assets/img/rigo-baby.jpg";
 import { CharacterCard } from "../components/CharacterCard.jsx";
-import { FilmsCard } from "../components/FilmsCard.jsx";
+import { StarshipsCard } from "../components/StarshipsCard.jsx";
 import { PlanetCard } from "../components/PlanetCard.jsx";
+import useActions from "../hooks/useActions.jsx";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
 export const Home = () => {
   const { store, dispatch } = useGlobalReducer();
+  const { getCharacters, getPlanets, getStarships } = useActions();
+
+  useEffect(() => {
+    getCharacters();
+    getPlanets();
+    getStarships();
+  }, []);
 
   return (
-    <div className="row">
+    <div className="starWarsCards">
       <div className="characterRow d-flex">
-        <CharacterCard />
+        {store?.characters.map((character) => (
+          <CharacterCard
+            key={character._id || index}
+            name={character.properties.name}
+            hair_color={character.properties.hair_color}
+            gender={character.properties.gender}
+            eye_color={character.properties.hair_color}
+          />
+        ))}
       </div>
       <div className="planetRow d-flex">
-        <PlanetCard />
+        {store?.planets.map((planet) => (
+          <PlanetCard
+            key={planet._id || index}
+            name={planet.properties.name}
+            population={planet.properties.population}
+            terrian={planet.properties.terrain}
+            gravity={planet.properties.gravity}
+          />
+        ))}
       </div>
-      <div className="filmsRow d-flex">
-        <FilmsCard />
+      <div className="starshipsRow d-flex">
+        {store?.starships.map((starship) => (
+          <StarshipsCard
+            key={starship._id || index}
+            name={starship.properties.name}
+            passengers={starship.properties.passengers}
+            length={starship.properties.length}
+            model={starship.properties.model}
+          />
+        ))}
       </div>
     </div>
   );
