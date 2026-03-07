@@ -23,6 +23,7 @@ export const Home = () => {
           <CharacterCard
             key={character._id || index}
             name={character.properties.name}
+            id={character.uid}
             hair_color={character.properties.hair_color}
             gender={character.properties.gender}
             eye_color={character.properties.hair_color}
@@ -34,6 +35,7 @@ export const Home = () => {
           <PlanetCard
             key={planet._id || index}
             name={planet.properties.name}
+            id={planet.uid}
             population={planet.properties.population}
             terrian={planet.properties.terrain}
             gravity={planet.properties.gravity}
@@ -45,6 +47,7 @@ export const Home = () => {
           <StarshipsCard
             key={starship._id || index}
             name={starship.properties.name}
+            id={starship.uid}
             passengers={starship.properties.passengers}
             length={starship.properties.length}
             model={starship.properties.model}
