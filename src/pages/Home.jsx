@@ -18,6 +18,7 @@ export const Home = () => {
 
   return (
     <div className="starWarsCards">
+      <h1 className="text-danger">Characters</h1>
       <div className="characterRow d-flex">
         {store?.characters.map((character) => (
           <CharacterCard
@@ -30,6 +31,7 @@ export const Home = () => {
           />
         ))}
       </div>
+      <h1 className="text-danger">Planets</h1>
       <div className="planetRow d-flex">
         {store?.planets.map((planet) => (
           <PlanetCard
@@ -42,6 +44,7 @@ export const Home = () => {
           />
         ))}
       </div>
+      <h1 className="text-danger mb-0">Starships</h1>
       <div className="starshipsRow d-flex">
         {store?.starships.map((starship) => (
           <StarshipsCard

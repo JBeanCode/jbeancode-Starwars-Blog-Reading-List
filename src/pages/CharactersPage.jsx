@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 
+
 export const CharactersPage = () => {
     const { store } = useGlobalReducer();
     const { id } = useParams();
@@ -32,7 +33,6 @@ export const CharactersPage = () => {
             <p>Height: {character.height}</p>
             <p>Mass: {character.mass}</p>
             <p>Birth Year: {character.birth_year}</p>
-            {/* …other fields if you like… */}
         </div>
     );
 };

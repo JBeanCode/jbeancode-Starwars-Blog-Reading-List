@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
+import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
 export const Navbar = () => {
+  const { store } = useGlobalReducer();
+
+  const allFavorites = [
+    ...store.favorites.characters.map(item => ({ ...item, kind: 'characters' })),
+    ...store.favorites.planets.map(item => ({ ...item, kind: 'planets' })),
+    ...store.favorites.starships.map(item => ({ ...item, kind: 'starships' })),
+  ];
+
+  const getLinkPath = (favorite) => {
+    return `/${favorite.kind}/${favorite.uid}`;
+  };
+
   return (
     <nav className="navbar navbar-light bg-light">
       <div className="container">
@@ -21,24 +34,24 @@ export const Navbar = () => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Favorites
+              Favorites ({allFavorites.length})
             </button>
             <ul className="dropdown-menu dropdown-menu-end">
-              <li>
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </li>
+              {allFavorites.length === 0 ? (
+                <li>
+                  <a className="dropdown-item" href="#">
+                    No favorites yet
+                  </a>
+                </li>
+              ) : (
+                allFavorites.map((favorite, index) => (
+                  <li key={index}>
+                    <Link className="dropdown-item" to={getLinkPath(favorite)}>
+                      {favorite.name}
+                    </Link>
+                  </li>
+                ))
+              )}
             </ul>
         </div>
       </div>
