@@ -37,7 +37,7 @@ export const Home = () => {
             name={planet.properties.name}
             id={planet.uid}
             population={planet.properties.population}
-            terrian={planet.properties.terrain}
+            terrain={planet.properties.terrain}
             gravity={planet.properties.gravity}
           />
         ))}

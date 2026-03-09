@@ -23,14 +23,15 @@ export const PlanetsPage = () => {
 
     return (
         <div className="text-center mt-5">
-            <img src={`https://github.com/breatheco-de/swapi-images/blob/master/public/images/people/${id}.jpg?raw=true`} />
+            <img src={`https://github.com/breatheco-de/swapi-images/blob/master/public/images/planets/${id}.jpg?raw=true`} />
             <h1>{planet.name}</h1>
             <p>Climate: {planet.climate}</p>
-            <p>Terrain: {planet.terrain}</p>
             <p>Population: {planet.population}</p>
-            <p>Height: {planet.height}</p>
-            <p>Mass: {planet.mass}</p>
-            <p>Birth Year: {planet.birth_year}</p>
+            <p>Terrain: {planet.terrain}</p>
+            <p>Surface Water: {planet.surface_water}</p>
+            <p>Diameter: {planet.diameter}</p>
+            <p>Rotational Period: {planet.rotation_period}</p>
+            <p>Orbital Period: {planet.orbital_period}</p>
             {/* …other fields if you like… */}
         </div>
     );
