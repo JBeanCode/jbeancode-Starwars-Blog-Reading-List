@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
 export const Navbar = () => {
-  const { store } = useGlobalReducer();
+  const { store, dispatch } = useGlobalReducer();
 
   const allFavorites = [
     ...store.favorites.characters.map(item => ({ ...item, kind: 'characters' })),
@@ -12,6 +12,11 @@ export const Navbar = () => {
 
   const getLinkPath = (favorite) => {
     return `/${favorite.kind}/${favorite.uid}`;
+  };
+
+  const handleDeleteFavorite = (favorite, event) => {
+    event.preventDefault(); // Prevent navigation
+    dispatch({ type: "toggle_favorite", payload: { uid: favorite.uid, name: favorite.name, kind: favorite.kind } });
   };
 
   return (
@@ -46,9 +51,18 @@ export const Navbar = () => {
               ) : (
                 allFavorites.map((favorite, index) => (
                   <li key={index}>
-                    <Link className="dropdown-item" to={getLinkPath(favorite)}>
-                      {favorite.name}
-                    </Link>
+                    <div className="dropdown-item d-flex justify-content-between align-items-center">
+                      <Link to={getLinkPath(favorite)} className="text-decoration-none">
+                        {favorite.name}
+                      </Link>
+                      <button
+                        className="btn btn-sm btn-outline-danger ms-2"
+                        onClick={(event) => handleDeleteFavorite(favorite, event)}
+                        title="Remove from favorites"
+                      >
+                        ×
+                      </button>
+                    </div>
                   </li>
                 ))
               )}

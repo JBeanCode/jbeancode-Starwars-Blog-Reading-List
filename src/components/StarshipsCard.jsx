@@ -6,7 +6,7 @@ export const StarshipsCard = ({ name, model, passengers, length, id }) => {
   const { store, dispatch } = useGlobalReducer();
 
   return (
-    <div className="text-center mt-5">
+    <div className="text-center">
       <div className=" card starshipsCard" style={{ width: 18 + "rem" }}>
         <img
           src={`https://github.com/breatheco-de/swapi-images/blob/master/public/images/starships/${id}.jpg?raw=true`}

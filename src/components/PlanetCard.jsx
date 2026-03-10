@@ -8,7 +8,7 @@ export const PlanetCard = ({ name, population, terrain, gravity, id }) => {
   const { store, dispatch } = useGlobalReducer();
 
   return (
-    <div className="text-center mt-5">
+    <div className="text-center">
       <div className=" card planetCard" style={{ width: 18 + "rem" }}>
         <img
           src={`https://github.com/breatheco-de/swapi-images/blob/master/public/images/planets/${id}.jpg?raw=true`}

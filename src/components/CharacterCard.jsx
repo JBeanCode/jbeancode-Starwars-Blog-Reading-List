@@ -16,7 +16,7 @@ export const CharacterCard = ({name, hair_color, gender, eye_color, id }) => {
     //   />
 
     return (
-        <div className="text-center mt-5">
+        <div className="text-center">
             <div className=" card characterCard" style={{width: 18 + "rem"}}>
                 <img src={`https://github.com/breatheco-de/swapi-images/blob/master/public/images/people/${id}.jpg?raw=true`} className="card-img-top" alt={`No image found for ${name}`}/>
                     <div className="card-body">
