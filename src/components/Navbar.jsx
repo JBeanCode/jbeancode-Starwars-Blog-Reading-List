@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import starWarsLogo from "../assets/img/StarWarsLogo.png";
 
 export const Navbar = () => {
   const { store, dispatch } = useGlobalReducer();
@@ -27,7 +28,7 @@ export const Navbar = () => {
             <img
               className="starWarsLogo"
               style={{ height: "30px" }}
-              src="src/assets/img/StarWarsLogo.png"
+              src={starWarsLogo}
               alt="..."
             />
           </span>
